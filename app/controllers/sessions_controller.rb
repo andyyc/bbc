@@ -3,6 +3,18 @@ class SessionsController < ApplicationController
     @title = "Sign in"
   end
 
+  def create_extauth
+    auth = request.env['omniauth.auth']
+
+    unless @auth = Authorization.find_from_hash(auth)
+      @auth = Authorization.create_from_hash(auth, current_user)
+      puts("creating auth")
+    end
+
+    sign_in @auth.user
+    redirect_to current_user
+  end
+
   def create
     user = User.authenticate(params[:session][:email])
     if user.nil?

@@ -34,3 +34,5 @@ end
 
 gem 'execjs'
 gem 'therubyracer'
+
+gem 'omniauth'
