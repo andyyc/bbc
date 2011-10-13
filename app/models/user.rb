@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   before_save :set_salt
   
   has_many :authorizations
+  has_many :links, :dependent => :destroy
 
   def self.authenticate(email)
     user = find_by_email(email)
@@ -17,6 +18,10 @@ class User < ActiveRecord::Base
   def self.authenticate_with_salt(id, cookie_salt)
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
+  end
+
+  def feed
+    Link.where("user_id = ?", id)
   end
   
   private

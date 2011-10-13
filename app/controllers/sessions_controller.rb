@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
     @title = "Sign in"
+    if signed_in?
+      @link = Link.new
+      @feed_items = current_user.feed
+    end
   end
 
   def create_extauth
