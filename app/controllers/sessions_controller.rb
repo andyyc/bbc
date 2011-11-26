@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
 
   def create_extauth
     auth = request.env['omniauth.auth']
-
+    
     unless @auth = Authorization.find_from_hash(auth)
       @auth = Authorization.create_from_hash(auth, current_user)
       puts("creating auth")
     end
 
     sign_in @auth.user
-    redirect_to current_user
+    redirect_back_or(root_path)
   end
 
   def create
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      redirect_to user
+      redirect_back_or(root_path)
     end
   end
   

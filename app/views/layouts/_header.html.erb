@@ -1,16 +1,19 @@
 <header>
-  <nav>
+  <div id="pageHeader" class="clearfix">
+    <h1 id="pageLogo"><a href="<%= url_for root_path %>">bibzy</a></h1>
+  <nav id="pageNav" class="rfloat">
     <ul>
+      <% if signed_in? %>
+      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+      <% else %>
+      <li><%= link_to "Sign in", 'auth/facebook'%></li>
+      <% end %>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
-      <li><%= link_to "Profile", current_user %></li>
+      <li>(Signed in as <%= current_user.email %>)</li>
       <% end %>
-      <li><%= link_to "Help"  %></li>
-      <% if signed_in? %>
-      <li><%= link_to "Sign out of #{current_user.email}", signout_path, :method => :delete %></li>
-      <% else %>
-      <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
+
     </ul>
   </nav>
+  </div>
 </header>

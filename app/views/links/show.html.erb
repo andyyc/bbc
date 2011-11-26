@@ -1,0 +1,40 @@
+<h1 class="link_url bottomspaced"><%= @link.url %></h1>
+<% if @is_owner %>
+<div>
+  <%= render :partial => 'shared/link_user_setting_form' %>
+</div>
+<div>
+  <% @conversations.each do |c| %>
+  <div class="conversation_block more_bottomspaced box_shadow">
+    <% visitor_lus = LinkUserSetting.find_by_link_id_and_user_id(@link, c.visitor)  %>
+  <h2 class="bottomspaced">Conversation with <%= visitor_lus.name %></h2>
+  <div class="user_info_block">
+    <h2 class="user_info_header less_bottomspaced">Info <%= visitor_lus.name %> has shared with you</h2>
+    <%= render :partial => 'shared/show_user_info', :locals => {:fb_user_node => visitor_lus.fb_user_node} %>
+    <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => c }%>
+  </div>
+  <%= render :partial => 'shared/messages', :locals => {:conversation => c}%>
+  </div>
+  <% end %>
+</div>
+
+<% else %>
+<div>
+  <%= render :partial => 'shared/link_user_setting_form' %>
+</div>
+<div class="conversation_block box_shadow">
+  <% owner_lus = LinkUserSetting.find_by_link_id_and_user_id(@link, @link.owner)  %>
+  <h2 class="bottomspaced">Conversation with <%= owner_lus.name %></h2>
+  <div class="user_info_block">
+    <h2 class="user_info_header less_bottomspaced">Info <%= owner_lus.name %> has shared with you</h2>
+  <%= render :partial => 'shared/show_user_info', :locals => {:fb_user_node => owner_lus.fb_user_node} %>
+  <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => nil }%>
+  </div>
+  <% if not @conversation.nil? %>
+  <%= render :partial => 'shared/messages', :locals => {:conversation => @conversation}%>
+  <% else %>
+  <%= render :partial => 'shared/message_form', :locals => {:conversation => nil} %>
+  <% end %>
+</div>
+
+<% end %>

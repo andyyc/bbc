@@ -36,3 +36,4 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'omniauth'
+gem 'koala'

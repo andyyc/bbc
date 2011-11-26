@@ -1,0 +1,42 @@
+header {
+    min-width:981px;
+    width:100%;
+    height:38px;
+}
+
+#pageHeader{
+    margin:0 auto;
+    width:981px;
+}
+
+#pageLogo{
+    float:left;
+    font-size:20px;
+    margin-top:8px;
+}
+
+#pageLogo a{
+    text-decoration: none;
+    color:black;
+}
+
+#pageNav ul{
+    margin-right:1px;
+    margin-top:12px;
+}
+
+#pageNav ul li{
+    margin-left:10px;
+    float:right;
+    dislay:inline-block;
+}
+
+#pageNav ul li a{
+    font-weight:bold;
+    text-decoration:none;
+    color:#222;
+}
+
+#pageNav ul li a:hover{
+    color:#999;
+}

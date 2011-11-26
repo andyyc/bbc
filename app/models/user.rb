@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   before_save :set_salt
   
   has_many :authorizations
-  has_many :links, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
+  has_many :conversation_user_settings
+  has_many :conversations, :through => :conversation_user_settings
+  has_many :link_user_settings
+  has_many :links, :through => :link_user_settings
 
   def self.authenticate(email)
     user = find_by_email(email)
@@ -21,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    Link.where("user_id = ?", id)
+    Link.where("owner_id = ?", id)
   end
   
   private

@@ -1,0 +1,14 @@
+<% mutual_friends =  get_mutual_friends(current_user, @is_owner, conversation) %>
+<% if mutual_friends.length > 0 %>
+<div class="mutual_friends_block">
+  <h3 class="least_bottomspaced">Mutual Friends</h3>
+  <div class="mutual_friends_block_inner clearfix">
+  <% for friend in mutual_friends %>
+  <div class="friend_block clearfix lfloat">
+    <img class="friend_image lfloat" src="<%= friend['picture_url'] %>" />
+    <div class="friend_content lfloat"><%= friend['name'] %></div>
+  </div>
+  <% end %>
+  </div>
+</div>
+<% end %>

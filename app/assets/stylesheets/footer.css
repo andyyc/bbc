@@ -1,0 +1,34 @@
+footer{
+    min-width:981px;
+    margin:0 auto;
+}
+
+#pageFooter{
+    margin:0 auto;
+    width:981px;
+    margin-top:20px;
+}
+
+#pageFooterNav a{
+    text-decoration: none;
+    color:#888;
+    font-size:0.9em;
+}
+
+#pageFooterNav a:hover{
+    text-decoration:underline;
+}
+
+#pageFooterNav ul{
+    float:right;
+}
+
+#pageFooterNav ul li{
+    float:left;
+    margin-right:8px;
+}
+
+#pageFooterLeft{
+    float:left;
+    font-size:0.9em;
+}

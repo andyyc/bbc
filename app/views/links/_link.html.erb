@@ -5,7 +5,7 @@
       Posted <%= time_ago_in_words(link.created_at) %> ago.
     </span>
   </td>
-  <% if current_user?(link.user) %>
+  <% if current_user?(link.owner) %>
   <td>
     <%= link_to "delete", link, :method => :delete, 
     :confirm => "You sure?",

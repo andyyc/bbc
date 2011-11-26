@@ -1,0 +1,14 @@
+<% count=0 %>
+<% conversation.messages.each do |m| %>
+<% message_lus = LinkUserSetting.find_by_link_id_and_user_id(conversation.link.id, m.user.id) %>
+<div class="message_block <% if count== 0%>first<% end %>">
+  <h3 class="less_topspaced"><% if m.user.id == current_user.id %>You (<%= message_lus.name %>)<% else %><%= message_lus.name %><% end %> wrote:</h3>
+  <div>
+    <%= m.body %>
+  </div>
+  <% count += 1 %>
+<% end %>
+<%= render :partial => 'shared/message_form', :locals => {:conversation => conversation} %>  
+<% conversation.messages.each do |m| %>
+</div>
+<% end %>

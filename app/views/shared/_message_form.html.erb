@@ -1,0 +1,12 @@
+<%= form_for @message, :html => { :class => "message_form_block"}, :url => { :action=> "show" } do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field less_bottomspaced">
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+  <% if not conversation.nil? %>
+  <%= hidden_field_tag :conversation_id, conversation.id  %>
+  <% end %>
+<% end %>

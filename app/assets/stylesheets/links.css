@@ -1,0 +1,146 @@
+.links_table{
+    border:1px solid #aaa;
+}
+
+.links_table th{
+    padding:5px 20px;
+}
+
+.links_table td{
+    padding:5px 20px;
+}
+
+.link_url{
+    font-size:1.5em;
+    padding-left:10px;
+}
+
+.box_shadow{
+    -moz-box-shadow: 0em 0em 0.5em rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0em 0em 0.5em rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 0em 0em 0.5em rgba(0, 0, 0, 0.4);
+    box-shadow: 0em 0em 0.5em rgba(0, 0, 0, 0.4);
+}
+
+.display_name_form {
+    background-color:#eee;
+    padding:15px;
+    width:500px;
+}
+
+.user_settings_form{
+    background-color: #eee;
+    padding:15px;
+    width:500px;
+}
+
+.user_info_block{
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left:10px;
+    font-size:0.95em;
+}
+
+.user_info_header{
+    color:#444;
+    font-size:1em;
+}
+
+.fb_user_node_table{
+    width:100%;
+    font-size:0.95em;
+}
+
+.fb_user_node_table th.picture_header{
+    vertical-align:middle;
+}
+
+.picture_check_box{
+    margin-top:20px;
+}
+
+.fb_user_node_table th{
+    text-align:left;
+    vertical-align:top;
+    padding-right:30px;
+    color:#666;
+    padding-bottom:5px;
+}
+
+.fb_user_node_table td{
+    padding-bottom:5px;
+}
+
+.conversation_fb_user_node_table{
+    
+}
+
+.conversation_fb_user_node_table th{
+    text-align:left;
+    vertical-align:top;
+    padding-right:60px;
+    color:#666;
+    padding-bottom:5px;
+}
+
+.conversation_fb_user_node_table th.picture_header{
+    vertical-align:middle;
+}
+
+.conversation_fb_user_node_table td{
+    padding-bottom:5px;
+}
+
+#link_user_setting_name{
+}
+
+.conversation_block{
+    background-color:#EDEFF4;
+    padding:15px;
+}
+
+.conversation_block textarea{
+    width:400px;
+    height:90px;
+}
+
+.message_block {
+    margin-left:20px;
+}
+
+.message_block.first{
+    margin-left:0px !important;
+}
+
+.message_block h3 {
+    font-size:0.9em;
+}
+
+.message_form_block{
+    margin-top:8px;
+}
+
+.friend_block{
+    margin-right:10px;
+    margin-bottom:8px;
+}
+
+.friend_content{
+    width:102px;
+    font-size:11px;
+    margin-top:3px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    word-wrap:normal;
+}
+
+.friend_image{
+    margin-right:5px;
+}
+
+.mutual_friends_block h3{
+    color:#666;
+    font-size:1em;
+}

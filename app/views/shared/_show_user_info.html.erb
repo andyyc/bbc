@@ -1,0 +1,99 @@
+<table class="conversation_fb_user_node_table">
+  <% if fb_user_node.show_picture %>
+  <tr>
+    <th class="picture_header">
+      Picture
+    </th>
+    <td>
+      <%= image_tag(fb_user_node.picture) %>
+    </td>
+  </tr>
+  <% end %>
+  <% if fb_user_node.show_name %>
+  <tr>
+    <th>
+      Name
+    </th>
+    <td>
+        <%= fb_user_node.name %>
+    </td>
+  </tr>
+  <% end %>
+  <% if fb_user_node.show_gender %>
+  <tr>
+    <% if fb_user_node.gender %>
+    <th>
+      Gender
+    </th>
+    <td>
+        <%= fb_user_node.gender %>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  <% if fb_user_node.show_hometown %>
+  <tr>
+    <% if fb_user_node.hometown %>
+    <th>
+      Hometown
+    </th>
+    <td>
+      <%= fb_user_node.hometown %>      
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  <% if fb_user_node.show_location %>
+  <tr>
+    <% if fb_user_node.location %>
+    <th>
+      Location
+    </th>
+    <td>
+      <%= fb_user_node.location %>      
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  <tr>
+    <% if fb_user_node.fb_work_nodes.length != 0 %>
+    <% if fb_user_node.fb_work_nodes.where(:show => true).length > 0 %>
+    <th>
+      Work
+    </th>
+    <td>
+      <% fb_user_node.fb_work_nodes.each do |work_node| %>
+      <% if work_node.show %>
+      <div>
+        <%= work_node.employer %> |
+        <%= work_node.position %>
+        <%= work_node.location %>
+      </div>
+      <% end %>
+      <% end %>
+    </td>
+    <% end %>
+    <% end %>
+  </tr>
+  <% if fb_user_node.fb_education_nodes.length != 0 %>
+  <% if fb_user_node.fb_education_nodes.where(:show => true).length > 0 %>
+  <tr>
+    <th>
+      Education
+    </th>
+    <td>
+      <% fb_user_node.fb_education_nodes.each do |education_node| %>
+      <% if education_node.show %>
+      <div>
+        <%= education_node.school %> |
+        <%= education_node.year %>
+        <%= education_node.degree %>
+        <%= education_node.school_type %>
+      </div>
+      <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

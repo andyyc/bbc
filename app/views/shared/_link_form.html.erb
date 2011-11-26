@@ -1,6 +1,7 @@
 <%= form_for @link do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
+  <h1 class="link less_bottomspaced">Enter a url</h1>
+  <div class="field less_bottomspaced">
     <%= f.text_field :url %>
   </div>
   <div class="actions">

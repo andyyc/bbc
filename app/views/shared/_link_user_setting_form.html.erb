@@ -1,0 +1,151 @@
+<%= form_for @link_user_setting, :html => {:class => "display_name_form box_shadow more_bottomspaced" }, :url => { :action => "show" } do |f| %>
+<div class="label least_bottomspaced">
+  <%= f.label :name, "Enter a display name"%>
+</div>
+<div class="field least_bottomspaced">
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.text_field :name, :value=> @link_user_setting.name %>
+</div>
+<div class="action">
+  <%= f.submit "Submit" %>
+</div>
+<% end %>
+<%= form_for @fb_user_node, :html=> {:class => "user_settings_form box_shadow more_bottomspaced"}, :url => { :action => "show" } do |f| %>
+<h1 class="less_bottomspaced">Select the info you want to share</h1>
+<table class="fb_user_node_table">
+  <tr>
+    <th class="picture_header">
+      Photo
+    </th>
+    <td>
+      <%= f.label :show_picture, image_tag(@fb_user_node.picture) %>
+      <span class="rfloat picture_check_box">
+        <%= f.check_box :show_picture %>
+      </span>
+    </td>
+  </tr>
+    <th>
+      Name
+    </th>
+    <td>
+      <%= f.label :show_name, @fb_user_node.name %>
+      <span class="rfloat">
+        <%= f.check_box :show_name %>
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <% if @fb_user_node.gender %>
+    <th>
+      Gender
+    </th>
+    <td>
+      <%= f.label :show_gender, @fb_user_node.gender %>
+      <span class="rfloat">      
+        <%= f.check_box :show_gender %>
+      </span>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <% if @fb_user_node.hometown %>
+    <th>
+      Hometown
+    </th>
+    <td>
+      <%= f.label :show_hometown, @fb_user_node.hometown %>
+      <span class="rfloat">
+        <%= f.check_box :show_hometown %>        
+      </span>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <% if @fb_user_node.location %>
+    <th>
+      Location
+    </th>
+    <td>
+      <%= f.label :show_location, @fb_user_node.location %>
+      <span class="rfloat">
+        <%= f.check_box :show_location %>
+      </span>
+    </td>
+    <% end %>
+  </tr>
+  <% if @fb_user_node.fb_work_nodes.length != 0 %>
+  <% count = 0 %>
+  <% @fb_user_node.fb_work_nodes.each do |work_node| %>
+  <tr>
+    <th>
+      <% if count == 0 %>
+      Work
+      <% end %>
+    </th>
+    <td>
+        <%= f.fields_for work_node, :index => work_node.id do |work_form| %>
+          <div>
+            <% if work_node.employer %>
+            <%= work_form.label :show, work_node.employer %> |
+            <% end %>
+            <% if work_node.position %>
+            <%= work_form.label :show, work_node.position %>
+            <% end %>
+            <% if work_node.location %>
+            <%= work_form.label :show, work_node.location %>
+            <% end %>
+            <span class="rfloat">
+              <%= work_form.check_box :show %>
+            </span>
+          </div>
+        <% end %>
+    </td>
+    <% count += 1 %>
+    <% end %>
+    <% end %>
+  </tr>
+  <% if @fb_user_node.fb_education_nodes.length != 0 %>
+  <% count = 0 %>
+  <% @fb_user_node.fb_education_nodes.each do |education_node| %>
+  <tr>
+    <th>
+      <% if count == 0 %>
+      Education
+      <% end %>
+    </th>
+    <td>
+        <%= f.fields_for education_node, :index => education_node.id do |edu_form| %>
+          <div>
+            <% if education_node.school %>
+            <%= edu_form.label :show, education_node.school %> |
+            <% end %>
+            <% if education_node.year %>
+            <%= edu_form.label :show, education_node.year %>
+            <% end %>
+            <% if education_node.degree %>
+            <%= edu_form.label :show, education_node.degree %>
+            <% end %>
+            <% if education_node.school_type %>
+            <%= edu_form.label :show, education_node.school_type %>
+            <% end %>
+            <div class="rfloat" style="display:inline-block">
+              <%= edu_form.check_box :show %>
+            </div>
+          </div>
+        <% end %>
+    </td>
+  </tr>
+  <% count += 1 %>
+  <% end %>
+  <% end %>
+  <tr>
+    <td>
+    </td>
+    <td>
+      <%= f.submit "Save settings" %>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+<% end %>
