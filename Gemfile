@@ -37,3 +37,9 @@ gem 'therubyracer'
 
 gem 'omniauth'
 gem 'koala'
+
+gem 'heroku'
+
+group :production do
+      gem 'pg'
+end
