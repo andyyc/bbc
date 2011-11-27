@@ -107,11 +107,11 @@
 }
 
 .message_block {
-    margin-left:20px;
+    margin-left:0px;
 }
 
 .message_block.first{
-    margin-left:0px !important;
+    margin-left:10px !important;
 }
 
 .message_block h3 {
