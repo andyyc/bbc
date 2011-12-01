@@ -6,10 +6,13 @@
         Name
       </th>
       <th>
+        Created
+      </th>
+      <th>
         Link
       </th>
       <th>
-        Created
+        Embed
       </th>
       <th>
       </th>
@@ -17,15 +20,18 @@
     <% for feed_item in @feed_items %>
     <tr>
       <td class="link text_left">
-        <span class="content"><%= feed_item.url %></span>
-      </td>
-      <td>
-        <a class="token" href="<%= url_for feed_item.token %>"><%= feed_item.token %></a>
+        <span class="content"><a href="<%= url_for feed_item.token %>"><%= feed_item.url %></a></span>
       </td>
       <td>
         <span class="timestamp">
           <%= time_ago_in_words(feed_item.created_at) %> ago
         </span>
+      </td>
+      <td>
+        <a class="token" href="<%= url_for feed_item.token %>"><%= request.host_with_port %>/<%= feed_item.token %></a>
+      </td>
+      <td>
+        <input value="<a href='http://<%= request.host_with_port %>/<%= feed_item.token %>'>Bibzy</a>" type="text"/>
       </td>
       <% if current_user?(feed_item.owner) %>
       <td>

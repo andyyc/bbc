@@ -11,7 +11,7 @@
   <div class="user_info_block">
     <h2 class="user_info_header less_bottomspaced">Info <%= visitor_lus.name %> has shared with you</h2>
     <%= render :partial => 'shared/show_user_info', :locals => {:fb_user_node => visitor_lus.fb_user_node} %>
-    <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => c }%>
+    <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => c, :other_user_name => visitor_lus.name }%>
   </div>
   <%= render :partial => 'shared/messages', :locals => {:conversation => c}%>
   </div>
@@ -28,7 +28,7 @@
   <div class="user_info_block">
     <h2 class="user_info_header less_bottomspaced">Info <%= owner_lus.name %> has shared with you</h2>
   <%= render :partial => 'shared/show_user_info', :locals => {:fb_user_node => owner_lus.fb_user_node} %>
-  <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => nil }%>
+  <%= render :partial => 'shared/mutual_friends', :locals => {:conversation => nil, :other_user_name => owner_lus.name }%>
   </div>
   <% if not @conversation.nil? %>
   <%= render :partial => 'shared/messages', :locals => {:conversation => @conversation}%>
