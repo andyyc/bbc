@@ -36,6 +36,7 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'koala'
 
 gem 'heroku'
