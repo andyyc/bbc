@@ -43,8 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def self.create_from_hash!(hash)
-    puts hash
-    create(:email => hash['user_info']['email'])
+    create(:email => hash['info']['email'])
   end
   
 end
