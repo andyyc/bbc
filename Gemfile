@@ -41,4 +41,3 @@ gem 'koala'
 gem 'heroku'
 
 gem 'pg'
-gem 'taps'
