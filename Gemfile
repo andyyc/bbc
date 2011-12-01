@@ -42,3 +42,7 @@ gem 'koala'
 gem 'heroku'
 
 gem 'pg'
+
+group :production do 
+      gem 'thin'
+end
