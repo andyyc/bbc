@@ -6,7 +6,7 @@
 
 <% else %>
 <div class="welcome text_center bottomspaced">
-Bibzy is a text chat service that lets you view mutual friend info<br/> before you decide to interact with that person.
+Talksift is a text chat service that lets you view mutual friend info<br/> before you decide to interact with that person.
 </div>
 <div class="instruction_list_outer">
 <% if session[:return_to] %>
@@ -36,7 +36,7 @@ Bibzy is a text chat service that lets you view mutual friend info<br/> before y
 <% end %>
 </div>
 <div class="text_center super_topspaced">
-  <%= link_to image_tag("http://www.swaptreasures.com/siteimages/fb_login_icon.gif", :alt => "login with facebook"), 'auth/facebook'%>
+  <%= link_to image_tag("fb_login.gif", :alt => "login with facebook"), 'auth/facebook'%>
   <div class="fb_notice topspaced">
     We will not share any facebook data except for mutual friend info without your consent.
   </div>
