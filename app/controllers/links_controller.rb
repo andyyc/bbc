@@ -2,6 +2,14 @@ class LinksController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy, :show]
   before_filter :authorized_user, :only => :destroy
 
+  def index
+    @link = Link.new
+    
+    @feed_items = current_user.feed
+
+    render 'sessions/new'
+  end
+
   def show
     @token = params[:token]
     @link = Link.find_by_token(@token)
@@ -117,15 +125,16 @@ class LinksController < ApplicationController
 
   def create
 #    @link = current_user.links.build(params[:link])
-    @link = Link.new(params[:link])
-    @link.owner = current_user
-    if @link.save
-      flash.now[:notice] = "Link created"
-      redirect_to '/' + @link.token
-    else
-      @feed_items = []
-      render 'sessions/new'
+    if request.post?
+      @link = Link.new(params[:link])
+      @link.owner = current_user
+      if @link.save
+        flash.now[:notice] = "Link created"
+        redirect_to '/' + @link.token and return
+      end
     end
+    @feed_items = current_user.feed
+    render 'sessions/new'
   end
 
   def destroy

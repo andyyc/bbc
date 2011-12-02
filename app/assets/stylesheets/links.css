@@ -1,14 +1,36 @@
+.link_info_table input{
+    font-size:0.8em;
+}
+
+.link_info_table th{
+    text-align:left;
+}
+
+.link_info_table td{
+    text-align:left;
+    padding-left:10px;
+    padding-bottom:5px;
+}
 
 .links_table{
     border:1px solid #aaa;
+    font-size:0.95em;
 }
 
 .links_table th{
-    padding:5px 20px;
+    padding:10px 10px;
 }
 
 .links_table td{
-    padding:5px 20px;
+    padding:10px 10px;
+}
+
+.links_table .even{
+    background-color:#eeeeee;
+}
+
+.links_table input{
+    font-size:0.8em;
 }
 
 .link_url{

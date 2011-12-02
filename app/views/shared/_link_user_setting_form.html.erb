@@ -1,6 +1,6 @@
 <%= form_for @link_user_setting, :html => {:class => "display_name_form box_shadow more_bottomspaced" }, :url => { :action => "show" } do |f| %>
 <div class="label least_bottomspaced">
-  <%= f.label :name, "Enter a display name"%>
+  <%= f.label :name, "Enter your display name"%>
 </div>
 <div class="field least_bottomspaced">
   <%= render 'shared/error_messages', :object => f.object %>

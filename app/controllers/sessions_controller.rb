@@ -2,8 +2,7 @@ class SessionsController < ApplicationController
   def new
     @title = "Sign in"
     if signed_in?
-      @link = Link.new
-      @feed_items = current_user.feed
+      redirect_to :controller => 'links', :action => 'index'
     end
   end
 

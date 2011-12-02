@@ -1,5 +1,27 @@
 <h1 class="link_url bottomspaced"><%= @link.url %></h1>
 <% if @is_owner %>
+<table class="link_info_table less_bottomspaced leftspaced">
+  <tr>
+    <th>
+      Link
+    </th>
+    <td>
+      <a class="token" href="<%= url_for @link.token %>"><%= request.host_with_port %>/<%= @link.token %></a>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Embed
+    </th>
+    <td>
+      <input value="<a href='http://<%= request.host_with_port %>/<%= @link.token %>'>Talksift</a>" type="text" size='50'/>
+    </td>
+  </tr>
+</table>
+<div class="leftspaced bottomspaced">
+  <strong>Share</strong> this <strong>link</strong> with others and invite them to come <strong>talk</strong> with you.
+</div>
+
 <div>
   <%= render :partial => 'shared/link_user_setting_form' %>
 </div>

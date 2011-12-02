@@ -1,8 +1,8 @@
 <%= form_for @link do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <h1 class="link less_bottomspaced">Enter a url</h1>
+  <h1 class="link less_bottomspaced">Create a link</h1>
   <div class="field less_bottomspaced">
-    <%= f.text_field :url %>
+    <%= f.text_field :url, :onFocus => "if(this.value=='Description (eg. craigslist roommate post)') this.value='';", :onBlur => "if(this.value=='') this.value='Description (eg. craigslist roommate post)';", :value => "Description (eg. craigslist roommate post)", :size => 50 %>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>
