@@ -46,3 +46,5 @@ gem 'pg'
 group :production do 
       gem 'thin'
 end
+
+gem 'asset_sync'
