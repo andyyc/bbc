@@ -33,7 +33,6 @@ group :test do
 end
 
 gem 'execjs'
-gem 'therubyracer'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -45,6 +44,10 @@ gem 'pg'
 
 group :production do 
       gem 'thin'
+end
+
+group :development do
+      gem 'therubyracer'
 end
 
 gem 'asset_sync'
