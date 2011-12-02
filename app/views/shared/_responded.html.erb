@@ -1,0 +1,33 @@
+<% unless @responded_convs.empty? %>
+  <h1 class="more_topspaced less_bottomspaced">Links you've responded to</h1>
+  <table class="links_table center" summary="User links">
+    <tr>
+      <th class="text_left">
+        Name
+      </th>
+      <th>
+        Responded
+      </th>
+      <th>
+        Link
+      </th>
+    </tr>
+    <% reset_cycle() %>
+    <% for conv in @responded_convs %>
+    <tr class="<%= cycle('even', 'odd') -%>">
+      <td class="link text_left">
+        <span class="content"><a href="<%= url_for conv.link.token %>"><%= conv.link.url %></a></span>
+      </td>
+      <td>
+        <span class="timestamp">
+          <%= time_ago_in_words(conv.created_at) %> ago
+        </span>
+      </td>
+      <td>
+        <a class="token" href="<%= url_for conv.link.token %>"><%= request.host_with_port %>/<%= conv.link.token %></a>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+<% end %>

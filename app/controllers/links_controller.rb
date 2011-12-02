@@ -6,6 +6,7 @@ class LinksController < ApplicationController
     @link = Link.new
     
     @feed_items = current_user.feed
+    @responded_convs = Conversation.where(:visitor_id => current_user.id)
 
     render 'sessions/new'
   end
@@ -134,6 +135,8 @@ class LinksController < ApplicationController
       end
     end
     @feed_items = current_user.feed
+    @responded_convs = Conversation.where(:visitor_id => current_user.id)
+
     render 'sessions/new'
   end
 
