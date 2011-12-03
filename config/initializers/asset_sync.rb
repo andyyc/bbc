@@ -1,9 +1,12 @@
 AssetSync.configure do |config|
   config.fog_provider = 'AWS'
-  config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
-  config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-  config.fog_directory = ENV['FOG_DIRECTORY']
-  
+  #config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
+  #config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+  #config.fog_directory = ENV['FOG_DIRECTORY']
+  config.aws_access_key_id = 'AKIAIVJRR66QJIFCNEMA'
+  config.aws_secret_access_key = '1E09ibXiKdhsDY50ZS6v/MIVjwc84F0e5fikt9px'
+  config.fog_directory = 'warm-autumn-3401-assets'
+
   # Increase upload performance by configuring your region
   # config.fog_region = 'eu-west-1'
   #
