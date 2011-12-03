@@ -48,7 +48,7 @@ end
 
 group :development do
       gem 'therubyracer'
+      gem 'taps'
 end
 
 gem 'asset_sync'
-gem 'taps'
