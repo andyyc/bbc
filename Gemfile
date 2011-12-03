@@ -51,3 +51,4 @@ group :development do
 end
 
 gem 'asset_sync'
+gem 'taps'
