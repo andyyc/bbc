@@ -14,6 +14,7 @@ class Authorization < ActiveRecord::Base
 
   def self.create_from_hash(hash, user = nil, token = nil)
     puts 'create from hash'
+    puts hash
     user ||= User.create_from_hash!(hash)
     
     Authorization.create(:user => user, :uid => hash['uid'], :provider => hash['provider'], :token => hash['credentials']['token'], :first_name => hash['info']['first_name'], :last_name => hash['info']['last_name'], :name => hash['info']['name'], :nickname => hash['info']['nickname'])

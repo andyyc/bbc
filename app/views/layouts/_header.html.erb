@@ -10,7 +10,7 @@
       <% end %>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
-      <li>(Signed in as <%= current_user.authorizations.first.nickname %>)</li>
+      <li>(Signed in as <%= current_user.authorizations.first.first_name %>)</li>
       <% end %>
 
     </ul>
