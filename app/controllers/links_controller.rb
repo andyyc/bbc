@@ -153,6 +153,7 @@ class LinksController < ApplicationController
   end
 
   def create_user_graph(link_user_setting, profile, picture)
+    puts profile
     hometown = profile['hometown']
     if hometown
       hometown = hometown['name']

@@ -2,6 +2,7 @@ header {
     min-width:981px;
     width:100%;
     height:38px;
+    border-bottom:1px solid #d0d0d0;
 }
 
 #pageHeader{
@@ -18,6 +19,7 @@ header {
 #pageLogo a{
     text-decoration: none;
     color:black;
+
 }
 
 #pageNav ul{
