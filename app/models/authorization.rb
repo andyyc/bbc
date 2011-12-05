@@ -5,6 +5,7 @@ class Authorization < ActiveRecord::Base
 
   def self.find_from_hash(hash)
     puts 'find from hash'
+    puts hash
     authorization = find_by_provider_and_uid(hash['provider'], hash['uid'])
     unless authorization.nil?
       authorization.update_from_hash(hash)
