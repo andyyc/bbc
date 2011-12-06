@@ -49,6 +49,8 @@ class LinksController < ApplicationController
       edit_message_form(request, message_form)
       edit_link_user_setting_form(request, link_user_setting_form)
       edit_fb_user_node_form(request, fb_user_node_form)
+    else
+      session[:return_to] = url_for('/' + @token)
     end
   end
 
