@@ -1,5 +1,5 @@
-<h1 class="link_url bottomspaced"><%= @link.url %></h1>
 <% if @is_owner %>
+<h1 class="link_url bottomspaced"><%= @link.url %></h1>
 <table class="link_info_table less_bottomspaced leftspaced">
   <tr>
     <th>
@@ -41,6 +41,25 @@
 </div>
 
 <% else %>
+
+<% if current_user.nil? %>
+<div class="conversation_block box_shadow">
+  <% owner_lus = LinkUserSetting.find_by_link_id_and_user_id(@link, @link.owner)  %>
+  <h2 class="bottomspaced">Conversation with <%= owner_lus.name %></h2>
+  <div class="user_info_block">
+    <h2 class="user_info_header less_bottomspaced">Info <%= owner_lus.name %> has shared with you</h2>
+  <%= render :partial => 'shared/show_user_info', :locals => {:fb_user_node => owner_lus.fb_user_node} %>
+  </div>
+  <div>
+    <h2 class="topspaced bottomspaced fb_login_header">Login to chat and see if you have mutual friends!</h2>
+    <%= link_to image_tag("fb_login.gif", :alt => "login with facebook"), 'auth/facebook'%>
+    <div class="fb_notice topspaced">
+      We will not share any facebook data except for mutual friend info without your consent.
+    </div>
+  </div>
+</div>
+
+<% else %>
 <div>
   <%= render :partial => 'shared/link_user_setting_form' %>
 </div>
@@ -58,5 +77,6 @@
   <%= render :partial => 'shared/message_form', :locals => {:conversation => nil} %>
   <% end %>
 </div>
+<% end %>
 
 <% end %>

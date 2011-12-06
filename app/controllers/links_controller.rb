@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_filter :authenticate, :only => [:create, :destroy, :show]
+  before_filter :authenticate, :only => [:create, :destroy]
   before_filter :authorized_user, :only => :destroy
 
   def index
@@ -18,37 +18,38 @@ class LinksController < ApplicationController
     if @link.nil?
       raise ActionController::RoutingError.new('Not Found')
     end
-
-    message_form = params[:message]
-    link_user_setting_form = params[:link_user_setting]
-    fb_user_node_form = params[:fb_user_node]
-
-    @graph = Koala::Facebook::API.new(current_user.authorizations.first['token'])
-    @profile = @graph.get_object("me")
-    picture = @graph.get_picture("me")
-    if current_user and @link
-      @link_user_setting = LinkUserSetting.find_by_user_id_and_link_id(current_user.id, @link.id)
-
-      if @link_user_setting.nil?
-        @link_user_setting = LinkUserSetting.create(:link => @link, :user => current_user)
-        fb_user_node = create_user_graph(@link_user_setting, @profile, picture)
+    
+    unless current_user.nil?
+      message_form = params[:message]
+      link_user_setting_form = params[:link_user_setting]
+      fb_user_node_form = params[:fb_user_node]
+      
+      @graph = Koala::Facebook::API.new(current_user.authorizations.first['token'])
+      @profile = @graph.get_object("me")
+      picture = @graph.get_picture("me")
+      if current_user and @link
+        @link_user_setting = LinkUserSetting.find_by_user_id_and_link_id(current_user.id, @link.id)
+        
+        if @link_user_setting.nil?
+          @link_user_setting = LinkUserSetting.create(:link => @link, :user => current_user)
+          fb_user_node = create_user_graph(@link_user_setting, @profile, picture)
+        end
+        @fb_user_node = @link_user_setting.fb_user_node
       end
-      @fb_user_node = @link_user_setting.fb_user_node
-    end
-    
-    
-    if current_user == @link.owner
-      @conversations = current_user.conversations.find_all_by_link_id(@link.id)
-      @is_owner = true
-    else
-      @conversation = current_user.conversations.find_by_link_id(@link.id)
-      @is_owner = false
-    end
+      
+      
+      if current_user == @link.owner
+        @conversations = current_user.conversations.find_all_by_link_id(@link.id)
+        @is_owner = true
+      else
+        @conversation = current_user.conversations.find_by_link_id(@link.id)
+        @is_owner = false
+      end
 
-    edit_message_form(request, message_form)
-    edit_link_user_setting_form(request, link_user_setting_form)
-    edit_fb_user_node_form(request, fb_user_node_form)
-
+      edit_message_form(request, message_form)
+      edit_link_user_setting_form(request, link_user_setting_form)
+      edit_fb_user_node_form(request, fb_user_node_form)
+    end
   end
 
   def edit_fb_user_node_form(request, fb_user_node_form)
